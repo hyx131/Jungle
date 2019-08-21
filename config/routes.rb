@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'products#index'
+  root to: 'products#index' #root defines the "/" => the home page
 
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
