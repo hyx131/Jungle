@@ -1,0 +1,27 @@
+<section class="admin-products-new">
+
+<header class="page-header">
+    <div class = 'well'>
+      <h1>Login</h1>
+    </div>
+  </header>
+
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-1">
+    <%= form_tag '/login' do %>
+      
+
+        <div class="form-group">
+          <strong>Email:</strong> <div class: 'form-control'> <%= text_field_tag :email%></div>
+        </div>
+
+        <div class="form-group">
+          <strong>Password:</strong> <div class: 'form-control'><%= password_field_tag :password %></div>
+        </div>
+
+        <%= submit_tag "Login", class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+
+</section>
