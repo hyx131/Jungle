@@ -35,7 +35,7 @@
             <li class='vl'> Signed in as: &nbsp; </li> 
             <li class='vl'>  <strong><%= current_user.first_name %></strong></li> <li class='vl'> &nbsp;&nbsp;&nbsp;|</li> <li> <%= link_to "Logout", '/logout' %> </li>
           <% else %>
-            <li> <%= link_to 'Login', '/login' %></li> <li class='vl'>|</li> </li> <li> <%= link_to 'Signup', '/signup' %> </li>
+            <li> <%= link_to 'Login', '/login' %></li> <li class='vl'>|</li> <li> <%= link_to 'Signup', '/signup' %> </li>
           <% end %>
 
        <li class="dropdown">
