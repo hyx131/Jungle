@@ -8,9 +8,7 @@
 
   <div class="row">
     <div class="col-sm-6 col-sm-offset-1">
-    <%= form_for :user, url: '/users' do |f| %>
-
-      
+    <%= form_for :users, url: '/users' do |f| %>
 
         <div class="form-group">
           <strong>First Name:</strong> <%= f.text_field :first_name, class: 'form-control' %>
