@@ -4,32 +4,62 @@ describe Product do
 
   describe 'Validations' do
 
-    category = Category.new    
-    product = Product.new(name: "Toto", price: 50, quantity: 100, category_id: category.id)
-    
+    it "is valid with valid attributes" do
+      @category = Category.new
+      @category.name = "Toto Category"
+      @product = Product.new
+      @product.name = "Toto"
+      @product.price = 50
+      @product.quantity = 5
+      @product.category = @category
+
+      expect(@product).to be_valid
+    end
+
     it "is not valid without a name" do
-      product.name = nil
-      expect(product).to_not be_valid
+      @product = Product.new
+      @product.name = nil
+      @product.valid?
+      expect(@product.errors[:name]).to include("can't be blank")
+
+      @product.name = "Toto"
+      @product.valid?
+      expect(@product.errors[:name]).to_not include("can't be blank")
     end
 
-    it "is not valid without a price" do
-      product.price = nil
-      expect(product).to_not be_valid
+    it "is not valid without a price" do 
+      @product = Product.new
+      @product.price = nil
+      @product.valid?
+      expect(@product.errors[:price_cents]).to include("is not a number")
+
+      @product.price = 50
+      @product.valid?
+      expect(@product.errors[:price_cents]).to_not include("is not a number")
     end
 
-    it "is not valid without a quantity" do 
-      product.quantity = nil
-      expect(product).to_not be_valid
+    it "is not valid without a quantity" do
+      @product = Product.new
+      @product.quantity = nil
+      @product.valid?
+      expect(@product.errors[:quantity]).to include("can't be blank")
+
+      @product.quantity = 5
+      @product.valid?
+      expect(@product.errors[:quantity]).to_not include("can't be blank")
     end
 
     it "is not valid without a category" do
-      product.category_id = nil
-      expect(product).to_not be_valid
-    end
+      @product = Product.new
+      @category = Category.new
 
-    it "has errors included in the .errors.full_messages array" do
-      product.name = nil
-      expect(product.errors.full_messages).to include("Name can't be blank")
+      @product.category = nil
+      @product.valid?
+      expect(@product.errors[:category]).to include("can't be blank")
+
+      @product.category = @category
+      @product.valid?
+      expect(@product.errors[:category]).to_not include("can't be blank")
     end
 
   end
