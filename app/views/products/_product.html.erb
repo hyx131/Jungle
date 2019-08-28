@@ -5,7 +5,7 @@
   <% end %>
     <%= link_to product do %>
       <% if Rails.env.production? %>
-        <% cl_image_tag("https://res.cloudinary.com/duesavevk/image/upload/v1567022571/jungle/#{product.image}") %>
+        <% cl_image_tag("jungle/#{product.image}") %>
       <% else %>
         <%= image_tag product.image.thumb, alt: product.name %>
       <% end %>
