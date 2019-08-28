@@ -4,7 +4,9 @@
     <p class = "sold_out"> SOLD OUT! </p>
   <% end %>
     <%= link_to product do %>
-      <%= cl_image_tag("jungle/#{product.image.thumb}"), alt: product.name %>
+      <% if Rails.env.production? %>
+      <%= cl_image_tag("jungle/#{product.image}"), alt: product.name %>
+      <% end %>
       <h4><%= product.name %></h4>
     <% end %>
   </header>
