@@ -19,7 +19,7 @@ describe Product do
     it "is not valid without a name" do
       @product = Product.new
       @product.name = nil
-      @product.valid?
+      @product.valid? # check for errors on an object, if don't run this check, resosurce.errors ([]) will be empty and the following 'expect' statement won't run
       expect(@product.errors[:name]).to include("can't be blank")
 
       @product.name = "Toto"
